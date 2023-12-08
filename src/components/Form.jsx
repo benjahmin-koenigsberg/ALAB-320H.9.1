@@ -16,7 +16,7 @@ import { useReducer, useState } from "react";
 function Form({toDos, setToDos}) {
 
 
-const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , priority: 'light' });
+const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , priority: 'light', isComplete: false });
 
   return (
     <div className="container">
@@ -24,29 +24,34 @@ const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , prio
         <form action="">
           <div className="form-group row">
             <label className="col-form-label">
-                <h2>Add Task</h2>
+              <h2>Add Task</h2>
             </label>
 
-              <input
-                type="text"
-                className="form-control-plaintext border"
-                value={state.toDoInput}
-                placeholder=""
-                onChange={(e) =>
-                  dispatch({ type: "userInput", payload: e.target.value })
-                }
-              />
+            <input
+              type="text"
+              className="form-control-plaintext border pl-2"
+              value={state.toDoInput}
+              placeholder=""
+              onChange={(e) =>
+                dispatch({ type: "userInput", payload: e.target.value })
+              }
+            />
 
             <br></br>
             <div className="form-group row">
-              <label htmlFor="priority " className="col-form-label">Priority</label>
-              <select className="form-control" id="priority" onChange={(e)=>{
-                dispatch({type: 'priority', payload: e.target.value})
-              }}>
-                <option value='grey'>Low</option>
-                <option value='lightblue'>Moderate</option>
-                <option value='yellow'  >High</option>
-                <option value='red' >Urgent</option>
+              <label htmlFor="priority " className="col-form-label">
+                Priority Level 🔽{" "}
+              </label>
+              <select
+                className="form-control"
+                id="priority"
+                onChange={(e) => {
+                  dispatch({ type: "priority", payload: e.target.value });
+                }}>
+                <option value="grey">Low</option>
+                <option value="lightblue">Moderate</option>
+                <option value="yellow">High</option>
+                <option value="red">Urgent</option>
               </select>
             </div>
           </div>
@@ -55,7 +60,15 @@ const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , prio
             className="btn-dark"
             onClick={(e) => {
               e.preventDefault();
-              setToDos([ ...toDos, { id: uuidv4(), text: state.toDoInput, priority: state.priority } ]);
+              setToDos([
+                ...toDos,
+                {
+                  id: uuidv4(),
+                  text: state.toDoInput,
+                  priority: state.priority,
+                  isComplete: state.isComplete,
+                },
+              ]);
             }}>
             Add
           </button>

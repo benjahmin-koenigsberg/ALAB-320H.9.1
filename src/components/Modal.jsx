@@ -42,7 +42,7 @@ function Modal({ editTodo, setEditTodo, toDos, setToDos}) {
                 <br></br>
                 <div className="form-group row">
                   <label htmlFor="priority " className="col-form-label">
-                    Priority
+                    Priority 🔽
                   </label>
                   <select
                     className="form-control"

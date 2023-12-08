@@ -8,7 +8,7 @@ function App() {
   const [toDos, setToDos] = useState([]);
 
   return (
-    <div className="container d-flex flex-row w-100 gap-5">
+    <div className="container">
       <Form setToDos={setToDos} toDos={toDos} />
       <List setToDos={setToDos} toDos={toDos} />
     </div>

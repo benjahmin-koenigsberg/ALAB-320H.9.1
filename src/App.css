@@ -5,9 +5,46 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  height: 100vh;
+
 }
+
+
 
 
 ul {
   list-style-type: none;
+}
+
+
+html,
+body {
+  height: 100%;
+  margin: 0px !important;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  height: 10vh;
+  width: 100%;
+  background-color: #777;
+  z-index: 1;
+}
+
+#form {
+  padding-top: 45vh;
+  padding-bottom: 45vh;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  width: 100%;
+}
+
+#list {
+  position: fixed;
+  bottom: 0;
+  height: 45px;
+  width: 100%;
+  z-index: 1;
 }

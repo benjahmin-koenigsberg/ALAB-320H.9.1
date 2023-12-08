@@ -28,60 +28,61 @@ setToDos([...toDos])
   };
 
 
-
   useEffect(() => {
 
   }, [toDos]);
 
-  return (
+  return toDos.length >= 1 ? (
     <>
       <h4 className="mt-4">Task List</h4>
       <div className="border rounded border-2 p-z">
         {toDos?.map((toDo) => (
           <ul className="list-group m-auto" key={toDo.id}>
-              <li
-                className={`list-group-item fw-bold p-2`}
-                style={{ backgroundColor: `${toDo.priority}` }}>
-                {toDo.text}
-              </li>
-              <div className="d-flex justify-content-evenly m-2">
-                <button
-                  type="button"
-                  className="btn btn-dark"
-                  data-toggle="modal"
-                  data-target="#modal"
-                  id={toDo.id}
-                  onClick={(e) => handleEdit(e)}>
-                  📝
-                </button>
+            <li
+              className={`list-group-item fw-bold p-2`}
+              style={{ backgroundColor: `${toDo.priority}` }}>
+              {toDo.text}
+            </li>
+            <div className="d-flex justify-content-evenly m-2">
+              <button
+                type="button"
+                className="btn btn-dark"
+                data-toggle="modal"
+                data-target="#modal"
+                id={toDo.id}
+                onClick={(e) => handleEdit(e)}>
+                📝
+              </button>
 
-                {toDo.isComplete ? (
-                  <button
-                    className="btn btn-dark"
-                    id={toDo.id}
-                    onClick={(e) => handleDelete(e)}>
-                    ❌
-                  </button>
-                ) : (
-                  <button
-                    className="btn btn-dark"
-                    id={toDo.id}
-                    onClick={(e) => handleComplete(e)}>
-                    ✅
-                  </button>
-                )}
-              </div>
+              {toDo.isComplete ? (
+                <button
+                  className="btn btn-dark"
+                  id={toDo.id}
+                  onClick={(e) => handleDelete(e)}>
+                  ❌
+                </button>
+              ) : (
+                <button
+                  className="btn btn-dark"
+                  id={toDo.id}
+                  onClick={(e) => handleComplete(e)}>
+                  ✅
+                </button>
+              )}
+            </div>
           </ul>
         ))}
-
-        <Modal
-          editTodo={editTodo}
-          setEditTodo={setEditTodo}
-          setToDos={setToDos}
-          toDos={toDos}
-        />
       </div>
+      <Modal
+        editTodo={editTodo}
+        setEditTodo={setEditTodo}
+        setToDos={setToDos}
+        toDos={toDos}
+      />
     </>
+  ) : (
+    ""
+    // <p className="mt-4">No tasks</p>
   );
 }
 export default List;

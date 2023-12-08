@@ -19,12 +19,12 @@ function Form({toDos, setToDos}) {
 const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , priority: 'light', isComplete: false });
 
   return (
-    <div className="container">
+    <div className="container ">
       <div className="flex-container">
         <form action="">
           <div className="form-group row">
             <label className="col-form-label">
-              <h2>Add Task</h2>
+              <h4>Add Task</h4>
             </label>
 
             <input
@@ -38,12 +38,10 @@ const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , prio
             />
 
             <br></br>
-            <div className="form-group row">
-              <label htmlFor="priority " className="col-form-label">
-                Priority Level 🔽{" "}
-              </label>
+            <div className="form-group row m-auto">
+              <label className="col-form-label">Priority Level</label>
               <select
-                className="form-control"
+                className="form-select form-control-md"
                 id="priority"
                 onChange={(e) => {
                   dispatch({ type: "priority", payload: e.target.value });
@@ -51,7 +49,7 @@ const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , prio
                 <option value="grey">Low</option>
                 <option value="lightblue">Moderate</option>
                 <option value="yellow">High</option>
-                <option value="red">Urgent</option>
+                <option value="red">Urgent!</option>
               </select>
             </div>
           </div>
@@ -70,7 +68,7 @@ const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , prio
                 },
               ]);
             }}>
-            Add
+            Add Task
           </button>
         </form>
       </div>

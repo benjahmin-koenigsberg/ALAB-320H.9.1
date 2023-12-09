@@ -12,7 +12,7 @@ function Modal({ editTodo, setEditTodo, toDos, setToDos}) {
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Edit To Do</h5>
+            <h5 className="modal-title">Edit Task</h5>
             <button
               type="button"
               className="close"
@@ -25,12 +25,13 @@ function Modal({ editTodo, setEditTodo, toDos, setToDos}) {
             <form action="">
               <div className="form-group row">
                 <label className="col-form-label">
-                  <h2>Add Task</h2>
+                  {/* <h2>Add Task</h2> */}
+                  <h6>Task</h6>
                 </label>
 
                 <input
                   type="text"
-                  className="form-control-plaintext border"
+                  className="form-control-plaintext border p-2"
                   // value={  editTodo.title ? editTodo.ttitle : editTodo.text }
                   value={ editTodo.title }
                   onChange={(e) =>
@@ -64,7 +65,6 @@ function Modal({ editTodo, setEditTodo, toDos, setToDos}) {
                 </div>
               </div>
               <br></br>
-              <button className="btn-dark">Add</button>
             </form>
           </div>
           <div className="modal-footer">

@@ -11,17 +11,19 @@ const [editTodo, setEditTodo] = useState({});
     // const tasks = JSON.parse(localStorage.getItem("Tasks"))
     // console.log(tasks)
 
-    async function getJsonData() {
-      await axios
-        .get("https://jsonplaceholder.typicode.com/todos")
-        .then((response) => {
-          //console.log(response.data);
-          setToDos( [ ...response.data.slice(0, 7)]);
-        })
-        .catch((err) => console.log(err));
-    }
-    getJsonData();
-  }, []);
+    //   async function getJsonData() {
+    //     await axios
+    //       .get("https://jsonplaceholder.typicode.com/todos")
+    //       .then((response) => {
+    //         //console.log(response.data);
+    //         setToDos( [ ...response.data.slice(0, 7)]);
+    //       })
+    //       .catch((err) => console.log(err));
+    //   }
+    //   getJsonData();
+    // }, []);
+
+  }, [toDos]);
 
 
 const handleComplete = (e) => {
@@ -50,7 +52,7 @@ const toDo = toDos.find((todo) => todo.id == e.target.id);
 
   return toDos.length >= 1 ? (
     <>
-      <h4 className="mt-4">Task List</h4>
+      <h4 className="mt-4 container">Task List</h4>
       <div className="border rounded border-2 p-z bg-white shadow-lg">
         {toDos?.map((toDo) => (
           <ul className="list-group m-auto" key={toDo.id}>

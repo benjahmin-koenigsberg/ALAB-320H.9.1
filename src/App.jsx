@@ -11,11 +11,11 @@ function App() {
   const [toDos, setToDos] = useState([]);
 
   return (
-    <>
+    <div>
       <Header  id="header" />
       <Form setToDos={setToDos} toDos={toDos} id="form" />
       <List setToDos={setToDos} toDos={toDos} id="list" />
-    </>
+    </div>
   );
 }
 

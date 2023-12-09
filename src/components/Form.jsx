@@ -16,7 +16,7 @@ import { useReducer, useState } from "react";
 function Form({toDos, setToDos}) {
 
 
-const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , priority: 'light', isComplete: false });
+const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , priority: 'light', completed: false });
 
   return (
     <div className="container ">
@@ -29,7 +29,7 @@ const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , prio
 
             <input
               type="text"
-              className="form-control-plaintext border pl-2"
+              className="form-control-plaintext border pl-2 bg-white"
               value={state.toDoInput}
               placeholder=""
               onChange={(e) =>
@@ -39,7 +39,9 @@ const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , prio
 
             <br></br>
             <div className="form-group row m-auto">
-              <label className="col-form-label">Priority Level</label>
+              <label className="col-form-label">
+                <h4>Priority Level</h4>
+              </label>
               <select
                 className="form-select form-control-md"
                 id="priority"
@@ -55,18 +57,19 @@ const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , prio
           </div>
           <br></br>
           <button
-            className="btn-dark"
+            className="btn-dark btn"
             onClick={(e) => {
               e.preventDefault();
               setToDos([
                 ...toDos,
                 {
                   id: uuidv4(),
-                  text: state.toDoInput,
+                  title: state.toDoInput,
                   priority: state.priority,
-                  isComplete: state.isComplete,
+                  completed: state.completed,
                 },
               ]);
+              // localStorage.setItem("Tasks", JSON.stringify(toDos));
             }}>
             Add Task
           </button>

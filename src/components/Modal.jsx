@@ -1,5 +1,6 @@
 
 function Modal({ editTodo, setEditTodo, toDos, setToDos}) {
+
   return (
     <div
       className="modal fade"
@@ -30,11 +31,12 @@ function Modal({ editTodo, setEditTodo, toDos, setToDos}) {
                 <input
                   type="text"
                   className="form-control-plaintext border"
-                  value={editTodo.text}
+                  // value={  editTodo.title ? editTodo.ttitle : editTodo.text }
+                  value={ editTodo.title }
                   onChange={(e) =>
                     setEditTodo({
                       ...editTodo,
-                      text: e.target.value,
+                      title: e.target.value,
                     })
                   }
                 />

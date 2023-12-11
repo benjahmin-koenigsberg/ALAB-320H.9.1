@@ -29,7 +29,7 @@ const [ state , dispatch] = useReducer(reducer, { id: '' , toDoInput : '' , prio
 
             <input
               type="text"
-              className="form-control-plaintext border pl-2 bg-white"
+              className="form-control border pl-2 bg-white"
               value={state.toDoInput}
               placeholder=""
               onChange={(e) =>

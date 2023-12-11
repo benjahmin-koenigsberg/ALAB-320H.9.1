@@ -31,7 +31,7 @@ function Modal({ editTodo, setEditTodo, toDos, setToDos}) {
 
                 <input
                   type="text"
-                  className="form-control-plaintext border p-2"
+                  className="form-control border p-2"
                   // value={  editTodo.title ? editTodo.ttitle : editTodo.text }
                   value={ editTodo.title }
                   onChange={(e) =>

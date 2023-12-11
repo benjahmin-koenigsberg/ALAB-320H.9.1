@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
-import axios from 'axios'
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -8,24 +7,14 @@ function List({ toDos, setToDos }) {
 
 const [editTodo, setEditTodo] = useState({});
 
+
+
   useEffect(() => {
-    // setToDos(JSON.parse(localStorage.getItem("Tasks")))
-    // const tasks = JSON.parse(localStorage.getItem("Tasks"))
-    // console.log(tasks)
-
-    //   async function getJsonData() {
-    //     await axios
-    //       .get("https://jsonplaceholder.typicode.com/todos")
-    //       .then((response) => {
-    //         //console.log(response.data);
-    //         setToDos( [ ...response.data.slice(0, 7)]);
-    //       })
-    //       .catch((err) => console.log(err));
-    //   }
-    //   getJsonData();
-    // }, []);
-
   }, [toDos]);
+
+  // useEffect(() => {
+  //   setToDos([...toDos, ...JSON.parse(localStorage.getItem("Tasks"))]);
+  // });
 
 
 const handleComplete = (e) => {

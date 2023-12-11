@@ -1,5 +1,3 @@
-/** @format */
-
 import List from "./List";
 import { v4 as uuidv4 } from "uuid";
 import { useReducer, useState } from "react";
@@ -36,6 +34,7 @@ function Form({ toDos, setToDos }) {
 
             <input
               type="text"
+              id="task"
               className="form-control border pl-2 bg-white"
               value={state.toDoInput}
               placeholder=""
@@ -64,9 +63,11 @@ function Form({ toDos, setToDos }) {
           </div>
           <br></br>
           <button
-            className="btn-dark btn"
+            className="btn-dark btn mb-4"
             onClick={(e) => {
               e.preventDefault();
+                dispatch({ type: "userInput", payload: '' });
+
               setToDos([
                 ...toDos,
                 {
@@ -76,7 +77,6 @@ function Form({ toDos, setToDos }) {
                   completed: state.completed,
                 },
               ]);
-
               // localStorage.setItem("Tasks", JSON.stringify(toDos));
               toast("Task added! 📓", {
                 position: "top-right",

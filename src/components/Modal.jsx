@@ -1,4 +1,7 @@
 
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+
 function Modal({ editTodo, setEditTodo, toDos, setToDos}) {
 
   return (
@@ -72,12 +75,24 @@ function Modal({ editTodo, setEditTodo, toDos, setToDos}) {
               type="button"
               className="btn btn-primary"
               onClick={(e) => {
-                e.preventDefault();
-                setToDos([
-                  ...toDos,
-                  editTodo
-                ]);
+                // setToDos([...toDos, editTodo]);
+                    const updatedArray = toDos.filter(
+                      item => item.id !== editTodo.id
+                    );
 
+                // setToDos(updatedArray);
+                setToDos([...updatedArray, editTodo]);
+
+                toast("Task saved! 📝", {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                });
               }}>
               Save changes
             </button>
@@ -90,6 +105,7 @@ function Modal({ editTodo, setEditTodo, toDos, setToDos}) {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

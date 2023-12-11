@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import axios from 'axios'
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 function List({ toDos, setToDos }) {
 
@@ -32,21 +34,42 @@ console.log(e.target.id)
 console.log(toDo)
 toDo.completed = true;
 setToDos([...toDos])
+  toast.success("Task completed! 🏁", {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+
 }
 
 
   const handleDelete = (e) => {
     const updatedArray = toDos.filter( item => item.id != e.target.id);
     setToDos(updatedArray);
+      toast.warn("Task deleted! ❌", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
   };
 
 
   const handleEdit = (e) => {
 const toDo = toDos.find((todo) => todo.id == e.target.id);
-    console.log(toDo);
+   //console.log(toDo);
     setEditTodo(toDo);
     const updatedArray = toDos.filter((item) => item.id !== e.target.id);
-    setToDos(updatedArray);
+    // setToDos(updatedArray);
   };
 
 
@@ -68,7 +91,11 @@ const toDo = toDos.find((todo) => todo.id == e.target.id);
                 data-toggle="modal"
                 data-target="#modal"
                 id={toDo.id}
-                onClick={(e) => handleEdit(e)}>
+                  onClick={ (e) => {
+                  e.preventDefault()
+                  handleEdit(e)
+                  }}
+                >
                 📝
               </button>
 
@@ -76,7 +103,9 @@ const toDo = toDos.find((todo) => todo.id == e.target.id);
                 <button
                   className="btn btn-dark"
                   id={toDo.id}
-                  onClick={(e) => handleDelete(e)}>
+                  onClick={(e) => {
+                  handleDelete(e)}
+                  }>
                   ❌
                 </button>
               ) : (
@@ -97,6 +126,7 @@ const toDo = toDos.find((todo) => todo.id == e.target.id);
         setToDos={setToDos}
         toDos={toDos}
       />
+      <ToastContainer />
     </>
   ) : (
     ""
